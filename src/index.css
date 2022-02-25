@@ -13,33 +13,28 @@ body {
   color: #fff;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rebeccapurple;
-  color: #fff;
-  padding: 10px;
-}
-
-ul {
-  list-style: none;
-}
-
+/* Utilities */
 .container {
   max-width: 768px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.feedback-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin: 20px 0;
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+button:focus {
+  outline: none;
 }
 
 .card {
+  position: relative;
   background: #fff;
   color: #333;
   padding: 40px 50px;
@@ -49,4 +44,48 @@ ul {
 .card.reverse {
   background: rgba(0,0,0,0.4);
   color: #fff;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rebeccapurple;
+  color: #fff;
+  padding: 10px;
+}
+
+.feedback-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 25px;
+}
+
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.rating-display {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 50px;
+  height: 50px;
+  background: #555;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-item {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
