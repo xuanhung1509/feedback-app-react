@@ -46,6 +46,33 @@ button:focus {
   color: #fff;
 }
 
+.btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  color: #fff;
+  background: #333;
+}
+
+.btn-secondary {
+  color: #fff;
+  background: rebeccapurple;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:disabled {
+  cursor: auto;
+  background: #555;
+  color: #fff;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -53,8 +80,36 @@ header {
   background: rebeccapurple;
   color: #fff;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
+/* Feedback Form */
+.feedback-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.input-group input {
+  flex: 2;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.input-group input:focus {
+  outline: none;
+}
+
+/* Feedback Stats */
 .feedback-stats {
   display: flex;
   justify-content: space-between;
@@ -62,6 +117,7 @@ header {
   margin: 20px 0 25px;
 }
 
+/* Feedback List */
 .feedback-list {
   display: flex;
   flex-direction: column;
