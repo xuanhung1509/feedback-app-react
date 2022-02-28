@@ -46,8 +46,12 @@ button:focus {
   color: #fff;
 }
 
+button,
 .btn {
   cursor: pointer;
+}
+
+.btn {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -192,4 +196,17 @@ header {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+/* About Link */
+.about-link {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 50%;
+  background: rebeccapurple;
+  opacity: 0.8;
 }

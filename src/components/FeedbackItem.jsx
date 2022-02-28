@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 function FeedbackItem({ item, handleDelete }) {
   return (
     <Card>
-      <div className="rating-display">{item.rating}</div>
+      <div className='rating-display'>{item.rating}</div>
       <button className='delete-item' onClick={() => handleDelete(item.id)}>
-        <FaTimes color='purple'/>
+        <FaTimes color='purple' />
       </button>
-      <div className="text-display">{item.text}</div>
+      <div className='text-display'>{item.text}</div>
     </Card>
-  )
+  );
 }
 
 FeedbackItem.propTypes = {
