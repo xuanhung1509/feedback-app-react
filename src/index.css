@@ -42,7 +42,7 @@ button:focus {
 }
 
 .card.reverse {
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   color: #fff;
 }
 
@@ -107,6 +107,54 @@ header {
 
 .input-group input:focus {
   outline: none;
+}
+
+/* Rating Select */
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 40px 0 20px;
+}
+
+.rating li {
+  position: relative;
+}
+
+.rating input {
+  opacity: 0;
+}
+
+.rating input:checked ~ label,
+.rating input:checked ~ label:hover {
+  opacity: 1;
+  background: #333;
+  color: #fff;
+}
+
+.rating label {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #f4f4f4;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.rating label:hover {
+  opacity: 0.6;
+  background: #333;
+  color: #fff;
 }
 
 /* Feedback Stats */
