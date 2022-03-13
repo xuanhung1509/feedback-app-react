@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import RatingSelect from './RatingSelect';
 import Card from './shared/Card';
 import Button from './shared/Button';
@@ -10,7 +10,18 @@ function FeedbackForm() {
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(10);
 
-  const { addFeedback } = useContext(FeedbackContext);
+  // Get addFeedback() and feedbackEdit from the Context
+  const { addFeedback, feedbackEdit, updateFeedback } =
+    useContext(FeedbackContext);
+
+  // Display feedbackEdit onto the Form
+  useEffect(() => {
+    if (feedbackEdit.edit === true) {
+      setText(feedbackEdit.item.text);
+      setRating(feedbackEdit.item.rating);
+      setBtnDisabled(false);
+    }
+  }, [feedbackEdit]);
 
   const handleTextChange = (e) => {
     // The weird thing is that when we clear the input, the button still shows clickable, and when we start typing the 1st character, the message hasn't shown until we hit 2 characters.
@@ -41,7 +52,13 @@ function FeedbackForm() {
         rating,
       };
 
-      addFeedback(newFeedback);
+      if (feedbackEdit.edit === true) {
+        updateFeedback(feedbackEdit.item.id, newFeedback);
+      } else {
+        addFeedback(newFeedback);
+      }
+
+      // Clear form
       setText('');
     }
   };
