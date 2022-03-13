@@ -4,6 +4,7 @@ import { createContext, useState } from 'react';
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
+  // Construct feedback data
   const [feedback, setFeedback] = useState([
     {
       id: 1,
@@ -22,6 +23,7 @@ export const FeedbackProvider = ({ children }) => {
     },
   ]);
 
+  // Construct initial feedbackEdit
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,

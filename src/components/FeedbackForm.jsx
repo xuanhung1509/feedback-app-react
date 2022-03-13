@@ -46,12 +46,15 @@ function FeedbackForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Construct a new Feedback Item
     if (text.trim().length >= 10) {
       const newFeedback = {
         text,
         rating,
       };
 
+      // Update feedback if in edit mode, else add new feedback
       if (feedbackEdit.edit === true) {
         updateFeedback(feedbackEdit.item.id, newFeedback);
       } else {
