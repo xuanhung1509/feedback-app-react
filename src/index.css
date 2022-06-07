@@ -1,13 +1,249 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --dark-teal: #264653;
+  --light-teal: #2a9d8f;
+  --yellow: #e9c46a;
+  --orange: #f4a261;
+  --red: #e63946;
+  --white: #fff;
+  --light: #f4f4f4;
+  --dark: #333;
+  --black: #000;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  background: var(--dark-teal);
+  color: var(--light);
+  border: none;
+  border-radius: 50px;
+  font-size: inherit;
+}
+
+.btn:disabled {
+  cursor: context-menu;
+  background: var(--light);
+  color: #8c8c8c;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.logo {
+  background: var(--dark-teal);
+  color: var(--white);
+  padding: 1rem;
+  text-align: center;
+}
+
+.logo > * {
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Feedback Form */
+.feedback-form {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.feedback-form .card {
+  padding: 1rem 2.5rem;
+}
+
+.feedback-form h1 {
+  margin: 1rem 0 2rem;
+  font-size: 1.5rem;
+}
+
+/* Rating Select */
+.rating-select {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 70%;
+  margin: 0 auto 2rem;
+}
+
+.rating-group {
+  position: relative;
+}
+
+.rating-group > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+}
+
+.rating-group > label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background: var(--white);
+  color: var(--dark);
+  border-radius: 50%;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.rating-group > input:checked + label {
+  background: var(--dark-teal);
+  color: var(--white);
+}
+
+/* Review */
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+.input-group > input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: none;
+  background: inherit;
+  font-size: inherit;
+}
+
+.input-group > input:focus {
+  outline: none;
+}
+
+.input-group > .btn {
+  margin: 0 0.6rem;
+}
+
+.error {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  color: #e63946;
+  font-weight: 500;
+}
+
+/* Feedback List */
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feedback-list > .card {
+  width: 100%;
+}
+
+/* Feedback Item */
+.feedback-item {
+  position: relative;
+  padding: 1rem 2rem;
+}
+
+.feedback-item > .rating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background: var(--dark-teal);
+  color: var(--white);
+  border-radius: 50%;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  transform: translate(-60%, -60%);
+}
+
+.feedback-item > .icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feedback-item > .icons > * {
+  cursor: pointer;
+}
+
+.question-mark {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  padding: 1rem;
+  background: var(--light-teal);
+  border-radius: 50%;
+}
+
+/* About */
+.about h2 {
+  margin: 2rem 0 1rem;
+}
+
+.about h2 + p {
+  margin-bottom: 1rem;
+}
+
+.about .btn > a {
+  color: var(--white);
+}
+
+@media (max-width: 600px) {
+  .rating-select {
+    width: 80%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
 }
