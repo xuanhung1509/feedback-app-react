@@ -1,7 +1,7 @@
-function RatingSelect({ rating: selected, onSelect }) {
-  const handleSelect = (e) => {
+function RatingSelect({ rating: selected, handleSelect }) {
+  const onSelect = (e) => {
     const selectedValue = +e.currentTarget.value;
-    onSelect(selectedValue);
+    handleSelect(selectedValue);
   };
 
   return (
@@ -14,7 +14,7 @@ function RatingSelect({ rating: selected, onSelect }) {
             id={i + 1}
             value={i + 1}
             checked={selected === i + 1}
-            onChange={handleSelect}
+            onChange={onSelect}
           />
           <label htmlFor={i + 1}>{i + 1}</label>
         </div>

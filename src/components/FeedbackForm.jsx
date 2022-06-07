@@ -1,20 +1,23 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useFeedbackContext } from '../context/FeedbackContext';
 import Card from './shared/Card';
 import Button from './shared/Button';
 import RatingSelect from './RatingSelect';
 
-function FeedbackForm({ isEditMode, feedbackToUpdate, onSubmit }) {
+function FeedbackForm() {
+  const { isEditMode, setIsEditMode, feedbackToUpdate, handleSubmit } =
+    useFeedbackContext();
   const [rating, setRating] = useState(10);
   const [review, setReview] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [showError, setShowError] = useState(false);
 
-  const handleSelect = (selected) => {
+  const onSelect = (selected) => {
     setRating(selected);
   };
 
-  const handleTextChange = (e) => {
+  const onTextChange = (e) => {
     setReview(e.target.value);
 
     if (e.target.value.length >= 10) {
@@ -26,13 +29,19 @@ function FeedbackForm({ isEditMode, feedbackToUpdate, onSubmit }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const cancelEdit = () => {
+    setIsEditMode(false);
+    setRating(10);
+    setReview('');
+  };
+
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (review.trim().length < 10) {
       setShowError(true);
     } else {
-      onSubmit({
+      handleSubmit({
         id: isEditMode ? feedbackToUpdate.id : uuidv4(),
         rating,
         review,
@@ -52,19 +61,26 @@ function FeedbackForm({ isEditMode, feedbackToUpdate, onSubmit }) {
   }, [feedbackToUpdate]);
 
   return (
-    <form className='feedback-form' onSubmit={handleSubmit}>
+    <form className='feedback-form' onSubmit={onSubmit}>
       <Card>
         <h1>How would you rate your services with us?</h1>
-        <RatingSelect rating={rating} onSelect={handleSelect} />
+        <RatingSelect rating={rating} handleSelect={onSelect} />
         <div className='input-group'>
           <input
             type='text'
             placeholder='Write a review'
             value={review}
-            onChange={handleTextChange}
+            onChange={onTextChange}
           />
-          <Button type='submit' disabled={btnDisabled}>
-            Send
+          {isEditMode && (
+            <div onClick={cancelEdit}>
+              <Button type='button' variant='secondary'>
+                Cancel
+              </Button>
+            </div>
+          )}
+          <Button type='submit' variant='primary' disabled={btnDisabled}>
+            {isEditMode ? 'Update' : 'Send'}
           </Button>
         </div>
         {showError && (
@@ -78,6 +94,3 @@ function FeedbackForm({ isEditMode, feedbackToUpdate, onSubmit }) {
 }
 
 export default FeedbackForm;
-
-// re-styling
-// move things to context

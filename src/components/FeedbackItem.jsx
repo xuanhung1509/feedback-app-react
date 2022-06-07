@@ -1,23 +1,17 @@
-import Card from './shared/Card';
+import { useFeedbackContext } from '../context/FeedbackContext';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import Card from './shared/Card';
 
-function FeedbackItem({ feedback, onEdit, onDelete }) {
+function FeedbackItem({ feedback }) {
+  const { handleEdit, handleDelete } = useFeedbackContext();
   const { rating, review } = feedback;
-
-  const handleEdit = () => {
-    onEdit(feedback.id);
-  };
-
-  const handleDelete = () => {
-    onDelete(feedback.id);
-  };
 
   return (
     <Card>
       <div className='feedback-item'>
         <div className='icons'>
-          <FaEdit fill='#2a9d8f' onClick={handleEdit} />
-          <FaTrash fill='#264653' onClick={handleDelete} />
+          <FaEdit fill='#2a9d8f' onClick={() => handleEdit(feedback.id)} />
+          <FaTrash fill='#264653' onClick={() => handleDelete(feedback.id)} />
         </div>
         <div className='rating'>{rating}</div>
         <div className='review'>{review}</div>
